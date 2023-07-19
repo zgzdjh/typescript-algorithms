@@ -1,33 +1,30 @@
-export class Stack {
-  private data: any[] = []
+// 封装一个栈,限制的操作
+export class ArrayStack<T> {
+    private data: T[] = []
 
-  pop(): any {
-    return this.data.pop()
-  }
+    push(element: T): void {
+        this.data.push(element)
+    }
 
-  push(element: any): void {
-    this.data.push(element)
-  }
+    pop():T | undefined {
+        return this.data.pop()
+    }
 
-  pick(): any {
-    return this.data[this.data.length - 1]
-  }
+    peek():T | undefined {
+        return this.data[this.data.length - 1]
+    }
 
-  isEmpty(): Boolean {
-    return !this.data.length
-  }
+    isEmpty(): boolean {
+        return this.data.length == 0
+    }
+    
+    size(): number {
+        return this.data.length
+    }
 }
 
-const stack = new Stack()
+const stack = new ArrayStack<string>()
 
-stack.push('111')
-stack.push('222')
-
-console.log(stack.pick())
-console.log(stack.pop())
-console.log(stack.pop())
-console.log(stack.isEmpty())
-
-// module.exports = {
-//   Stack
-// }
+module.exports = {
+    stack
+}
